@@ -1,0 +1,37 @@
+﻿@using Knockular.HtmlHelpers
+
+@Html.Template("_BasicTemplate", "testTemplate")
+
+<div @Html.UseTemplate("testTemplate")></div>
+
+@if(Html.IsAngular())
+{
+    ViewBag.Title = "Angular";
+}
+
+@if (Html.IsKnockout())
+{
+    ViewBag.Title = "Knockout";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div @Html.Bind("value")></div>
+<p>Clicked <b @(Html.Bind("numberOfClicks")
+                    .Click("incrementClickCounter")
+                    .Visible("visible"))></b> times
+</p>
+
+<div>
+    <button @Html.Click("incrementClickCounter")>Click me</button>
+</div>
+n
+<div @Html.Visible("visible")>This is shown</div>
+
+<button @Html.Click("toggleHide")>Click me</button>
+
+
+@using (Html.ForEach("items", "item"))
+{
+    <div @Html.Bind("item")></div>
+}

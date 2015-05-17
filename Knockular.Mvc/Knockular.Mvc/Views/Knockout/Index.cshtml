@@ -1,0 +1,33 @@
+﻿@using Knockular.HtmlHelpers
+<script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+
+@Html.Partial("_BasicControl")
+
+@*<div data-bind="stringBuilder: '<h1>Hello</h1>'"></div>*@
+
+
+@*<div data-bind="template: { name: 'testTemplate', data: { value : 'value' }, as: 'item'}"></div>
+
+<script type="text/stringBuilder" id="testTemplate">
+    <h3 data-bind="text: item.value"></h3>
+    <p>Credits: <span data-bind="text: item.value"></span></p>
+</script>*@
+
+<script>
+    var viewModel = {
+        visible: ko.observable(true),
+        toggleHide : function() {
+            this.visible(!this.visible());
+            this.items.push("new");
+        },
+        numberOfClicks: ko.observable(0),
+        incrementClickCounter: function () {
+            var previousCount = this.numberOfClicks();
+            this.numberOfClicks(previousCount + 1);
+        },
+        value: "Value1",
+        items: ko.observableArray(["One", "Two", "Three"])
+    };
+
+    ko.applyBindings(viewModel);
+</script>
