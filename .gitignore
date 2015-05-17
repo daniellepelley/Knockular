@@ -106,6 +106,7 @@ _TeamCity*
 # NCrunch
 _NCrunch_*
 .*crunch*.local.xml
+*.ncrunchproject
 
 # MightyMoose
 *.mm.*
@@ -204,3 +205,4 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
