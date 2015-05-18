@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -92,92 +91,4 @@ namespace Knockular.HtmlHelpers
             return new HtmlSelfClosingBuilder(helper, openFunc, closeFunc);
         }
     }
-
-    public interface IHtmlStringBuilder : IHtmlString
-    {
-        IHtmlStringBuilder Bind(string property);
-        IHtmlStringBuilder Click(string function);
-        IHtmlStringBuilder Visible(string flag);
-        IHtmlStringBuilder UseTemplate(string templateId);
-    }
-
-    public class AngularHtmlStringBuilder : IHtmlStringBuilder
-    {
-        private string _output = string.Empty;
-
-        private string Build(string type, string value)
-        {
-            return string.Format(@"{0}=""{1}""", type, value);
-        }
-
-        public IHtmlStringBuilder Click(string function)
-        {
-            _output += Build(" ng-click", function + (function.Contains("(") ? string.Empty : "()"));
-            return this;
-        }
-
-        public IHtmlStringBuilder Bind(string property)
-        {
-            _output += Build(" ng-bind", property);
-            return this;
-        }
-
-        public IHtmlStringBuilder Visible(string flag)
-        {
-            _output += Build("ng-show", flag);
-            return this;
-        }
-
-        public IHtmlStringBuilder UseTemplate(string templateId)
-        {
-            _output += Build("ng-include", "'" + templateId + "'");
-            return this;
-        }
-
-        public string ToHtmlString()
-        {
-            return _output.Trim();
-        }
-    }
-
-    public class KnockoutHtmlStringBuilder : IHtmlStringBuilder
-    {
-        private List<string> _output = new List<string>();
-
-        private string Build(string type, string value)
-        {
-            return string.Format(@"{0}: {1}", type, value);
-        }
-
-        public IHtmlStringBuilder Click(string function)
-        {
-            _output.Add(Build("click", function));
-            return this;
-        }
-
-        public IHtmlStringBuilder Bind(string property)
-        {
-            _output.Add(Build("text", property));
-            return this;
-        }
-
-        public IHtmlStringBuilder Visible(string flag)
-        {
-            _output.Add(Build("visible", flag));
-            return this;
-        }
-
-        public IHtmlStringBuilder UseTemplate(string templateId)
-        {
-            var value = "{" + string.Format(" name: '{0}' ", templateId) + "}";
-            _output.Add(Build("template", value));
-            return this;
-        }
-
-        public string ToHtmlString()
-        {
-            return string.Format(@"data-bind=""{0}""", string.Join(", ", _output));
-        }
-    }
-
 }
