@@ -39,7 +39,7 @@ namespace Knockular.HtmlHelper.Test
         {
             Extensions.HtmlStringBuilderFactory = new KnockoutHtmlStringBuilderFactory();
 
-            var expected = @"data-bind=""visible: isVisible""";
+            var expected = @"data-bind=""visible: isVisible()""";
 
             var actual = CreateHtmlHelper()
                 .Visible("isVisible")
@@ -53,7 +53,7 @@ namespace Knockular.HtmlHelper.Test
         {
             Extensions.HtmlStringBuilderFactory = new KnockoutHtmlStringBuilderFactory();
 
-            var expected = @"data-bind=""if: isVisible""";
+            var expected = @"data-bind=""if: isVisible()""";
 
             var actual = CreateHtmlHelper()
                 .If("isVisible")

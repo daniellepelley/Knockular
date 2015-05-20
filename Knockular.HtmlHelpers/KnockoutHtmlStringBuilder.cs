@@ -25,13 +25,13 @@ namespace Knockular.HtmlHelpers
 
         public IHtmlStringBuilder Visible(string flag)
         {
-            _output.Add(Build("visible", flag));
+            _output.Add(Build("visible", flag + "()"));
             return this;
         }
 
         public IHtmlStringBuilder If(string flag)
         {
-            _output.Add(Build("if", flag));
+            _output.Add(Build("if", flag + "()"));
             return this;
         }
 
