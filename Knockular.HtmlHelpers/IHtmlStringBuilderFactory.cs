@@ -1,8 +1,10 @@
-﻿namespace Knockular.HtmlHelpers
+﻿using System.Web;
+
+namespace Knockular.HtmlHelpers
 {
     public interface IHtmlStringBuilderFactory
     {
-        IHtmlStringBuilder Create();
+        IHtmlStringBuilder Create(HttpContextBase httpContext);
     }
 
     public class KnockoutHtmlStringBuilderFactory : IHtmlStringBuilderFactory
@@ -11,6 +13,11 @@
         {
             return new KnockoutHtmlStringBuilder();
         }
+
+        public IHtmlStringBuilder Create(HttpContextBase httpContext)
+        {
+            return Create();
+        }
     }
 
     public class AngularHtmlStringBuilderFactory : IHtmlStringBuilderFactory
@@ -18,6 +25,11 @@
         public IHtmlStringBuilder Create()
         {
             return new AngularHtmlStringBuilder();
+        }
+
+        public IHtmlStringBuilder Create(HttpContextBase httpContext)
+        {
+            return Create();
         }
     }
 }

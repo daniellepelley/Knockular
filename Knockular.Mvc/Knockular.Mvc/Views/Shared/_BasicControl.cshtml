@@ -1,18 +1,37 @@
 ﻿@using Knockular.HtmlHelpers
 
-@Html.Template("_BasicTemplate", "testTemplate")
+@Html.Template("testTemplate", "_BasicTemplate")
 
 <div @Html.UseTemplate("testTemplate")></div>
+
+<hr />
+<h3>Is</h3>
 
 @if(Html.IsAngular())
 {
     ViewBag.Title = "Angular";
+    <div>Angular</div>
 }
 
 @if (Html.IsKnockout())
 {
     ViewBag.Title = "Knockout";
+    <div>Knockout</div>
 }
+
+<hr />
+<h3>IfAngular / IfKnockout</h3>
+
+@Html.IfAngular("<p>Angular</p>")
+@Html.IfKnockout("<p>Knockout</p>")
+
+
+<hr />
+<h3>If</h3>
+
+<h2 @Html.If("visible")>Only Appears when visible></h2>
+
+
 
 <h2>@ViewBag.Title</h2>
 
@@ -25,13 +44,32 @@
 <div>
     <button @Html.Click("incrementClickCounter")>Click me</button>
 </div>
-n
+
 <div @Html.Visible("visible")>This is shown</div>
 
 <button @Html.Click("toggleHide")>Click me</button>
 
 
+<hr />
+<h3>ForEach</h3>
+
 @using (Html.ForEach("items", "item"))
 {
     <div @Html.Bind("item")></div>
 }
+
+<hr/>
+<h3>Context</h3>
+
+@using (Html.Context("value", "myValue"))
+{
+    <div @Html.Bind("myValue")></div>
+}
+
+<hr />
+<h3>Href</h3>
+
+<a @Html.Href("http://google.co.uk/{{value}}", "'http://google.co.uk/' + value()")></a>
+
+
+

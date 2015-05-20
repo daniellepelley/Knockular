@@ -79,7 +79,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="AngularHtmlBuilderTests.cs" />
+    <Compile Include="HtmlHelperBuilder.cs" />
+    <Compile Include="KnockoutHtmlBuilderTests.cs" />
+    <Compile Include="HtmlHelperTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,15 +3,10 @@
 
 @Html.Partial("_BasicControl")
 
-@*<div data-bind="stringBuilder: '<h1>Hello</h1>'"></div>*@
+<hr />
+<h3>Href</h3>
 
-
-@*<div data-bind="template: { name: 'testTemplate', data: { value : 'value' }, as: 'item'}"></div>
-
-<script type="text/stringBuilder" id="testTemplate">
-    <h3 data-bind="text: item.value"></h3>
-    <p>Credits: <span data-bind="text: item.value"></span></p>
-</script>*@
+<a data-bind="attr: { href: 'http://google.co.uk/' + value() }">Link</a>
 
 <script>
     var viewModel = {
@@ -24,8 +19,9 @@
         incrementClickCounter: function () {
             var previousCount = this.numberOfClicks();
             this.numberOfClicks(previousCount + 1);
+            this.value(this.value() + "-");
         },
-        value: "Value1",
+        value: ko.observable("Value1"),
         items: ko.observableArray(["One", "Two", "Three"])
     };
 

@@ -27,11 +27,19 @@ namespace Knockular.HtmlHelpers
             return this;
         }
 
+        public IHtmlStringBuilder If(string flag)
+        {
+            _output += Build("ng-if", flag);
+            return this;
+        }
+
         public IHtmlStringBuilder UseTemplate(string templateId)
         {
             _output += Build("ng-include", "'" + templateId + "'");
             return this;
         }
+
+
 
         public string ToHtmlString()
         {

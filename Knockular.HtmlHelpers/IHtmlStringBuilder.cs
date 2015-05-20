@@ -8,5 +8,6 @@ namespace Knockular.HtmlHelpers
         IHtmlStringBuilder Click(string function);
         IHtmlStringBuilder Visible(string flag);
         IHtmlStringBuilder UseTemplate(string templateId);
+        IHtmlStringBuilder If(string flag);
     }
 }

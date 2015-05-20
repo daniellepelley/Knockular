@@ -9,6 +9,7 @@
         $scope.numberOfClicks = 0;
         $scope.incrementClickCounter = function() {
             $scope.numberOfClicks++;
+            $scope.value = $scope.value + "-";
         };
 
         $scope.visible = true;
@@ -18,8 +19,6 @@
         };
 
         $scope.items = ["One", "Two", "Three"];
-
-
     });
 </script>
 
@@ -28,5 +27,11 @@
 
 <div ng-app="app" ng-controller="testCtrl">
     @Html.Partial("_BasicControl")
+
+
+    <hr />
+    <h3>Href</h3>
+
+    <a ng-href="http://google.co.uk/{{value}}">Link</a>
 </div>
 

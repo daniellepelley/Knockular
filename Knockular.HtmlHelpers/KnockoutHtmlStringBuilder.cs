@@ -29,6 +29,12 @@ namespace Knockular.HtmlHelpers
             return this;
         }
 
+        public IHtmlStringBuilder If(string flag)
+        {
+            _output.Add(Build("if", flag));
+            return this;
+        }
+
         public IHtmlStringBuilder UseTemplate(string templateId)
         {
             var value = "{" + string.Format(" name: '{0}' ", templateId) + "}";
