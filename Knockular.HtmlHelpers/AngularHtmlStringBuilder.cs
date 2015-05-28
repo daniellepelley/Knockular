@@ -21,21 +21,34 @@ namespace Knockular.HtmlHelpers
             return this;
         }
 
+        public IHtmlStringBuilder BindTwoWay(string property)
+        {
+            _output += Build(" ng-model", property);
+            return this;
+        }
+
+        public IHtmlStringBuilder Date(string property, string format)
+        {
+            var value = string.Format("({0} | date: '{1}')", property, format);
+            _output += Build(" ng-bind", value);
+            return this;
+        }
+
         public IHtmlStringBuilder Visible(string flag)
         {
-            _output += Build("ng-show", flag);
+            _output += Build(" ng-show", flag);
             return this;
         }
 
         public IHtmlStringBuilder If(string flag)
         {
-            _output += Build("ng-if", flag);
+            _output += Build(" ng-if", flag);
             return this;
         }
 
         public IHtmlStringBuilder UseTemplate(string templateId)
         {
-            _output += Build("ng-include", "'" + templateId + "'");
+            _output += Build(" ng-include", "'" + templateId + "'");
             return this;
         }
 

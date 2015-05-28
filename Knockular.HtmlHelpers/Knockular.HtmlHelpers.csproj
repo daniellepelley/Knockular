@@ -75,11 +75,15 @@
     <Compile Include="IHtmlStringBuilder.cs" />
     <Compile Include="IHtmlStringBuilderFactory.cs" />
     <Compile Include="HtmlSelfClosingBuilder.cs" />
+    <Compile Include="KnockoutScripts.cs" />
     <Compile Include="KnockoutHtmlStringBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Script\koDate.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

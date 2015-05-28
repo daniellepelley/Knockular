@@ -23,6 +23,20 @@ namespace Knockular.HtmlHelpers
             return this;
         }
 
+        public IHtmlStringBuilder BindTwoWay(string property)
+        {
+            _output.Add(Build("value", property));
+            _output.Add(Build("valueUpdate", "'afterkeydown'"));
+            return this;
+        }
+
+        public IHtmlStringBuilder Date(string property, string format)
+        {
+            _output.Add(Build("dateString", property));
+            _output.Add(Build("dateFormat", string.Format("'{0}'", format)));
+            return this;
+        }
+
         public IHtmlStringBuilder Visible(string flag)
         {
             _output.Add(Build("visible", flag + "()"));

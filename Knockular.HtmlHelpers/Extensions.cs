@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection.Emit;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -39,6 +40,20 @@ namespace Knockular.HtmlHelpers
         {
             var builder = HtmlStringBuilderFactory.Create(helper.ViewContext.HttpContext);
             builder.Bind(property);
+            return builder;
+        }
+
+        public static IHtmlStringBuilder BindTwoWay(this HtmlHelper helper, string property)
+        {
+            var builder = HtmlStringBuilderFactory.Create(helper.ViewContext.HttpContext);
+            builder.BindTwoWay(property);
+            return builder;
+        }
+
+        public static IHtmlStringBuilder Date(this HtmlHelper helper, string property, string format)
+        {
+            var builder = HtmlStringBuilderFactory.Create(helper.ViewContext.HttpContext);
+            builder.Date(property, format);
             return builder;
         }
 
@@ -93,6 +108,11 @@ namespace Knockular.HtmlHelpers
 
         public static HtmlSelfClosingBuilder ForEach(this HtmlHelper helper, string collectionName, string itemName)
         {
+            return helper.ForEach(collectionName, itemName, "div");
+        }
+
+        public static HtmlSelfClosingBuilder ForEach(this HtmlHelper helper, string collectionName, string itemName, string tagName)
+        {
             string attribute;
 
             if (helper.IsAngular())
@@ -110,8 +130,8 @@ namespace Knockular.HtmlHelpers
                 return new HtmlSelfClosingBuilder(helper, () => string.Empty, () => string.Empty);
             }
 
-            Func<string> openFunc = () => "<div " + attribute + ">";
-            Func<string> closeFunc = () => "</div>";
+            Func<string> openFunc = () => "<" + tagName + " " + attribute + ">";
+            Func<string> closeFunc = () => "</" + tagName + ">";
 
             return new HtmlSelfClosingBuilder(helper, openFunc, closeFunc);
         }

@@ -1,5 +1,10 @@
 ﻿@using Knockular.HtmlHelpers
+<script src="~/Scripts/jquery-1.10.2.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js"></script>
+<script src="~/Scripts/datejs.js"></script>
+<script>
+    @KnockoutScripts.DateBinding
+</script>
 
 @Html.Partial("_BasicControl")
 
@@ -22,7 +27,8 @@
             this.value(this.value() + "-");
         },
         value: ko.observable("Value1"),
-        items: ko.observableArray(["One", "Two", "Three"])
+        items: ko.observableArray(["One", "Two", "Three"]),
+        date: "2014-10-03T11:15:00"
     };
 
     ko.applyBindings(viewModel);

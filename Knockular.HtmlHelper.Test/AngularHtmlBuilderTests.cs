@@ -20,6 +20,32 @@ namespace Knockular.HtmlHelper.Test
         }
 
         [Test]
+        public void BindTwoWay()
+        {
+            Extensions.HtmlStringBuilderFactory = new AngularHtmlStringBuilderFactory();
+            var expected = @"ng-model=""property""";
+
+            var actual = CreateHtmlHelper()
+                .BindTwoWay("property")
+                .ToHtmlString();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void Date()
+        {
+            Extensions.HtmlStringBuilderFactory = new AngularHtmlStringBuilderFactory();
+            var expected = @"ng-bind=""(property | date: 'dd/MM/yyyy')""";
+
+            var actual = CreateHtmlHelper()
+                .Date("property", "dd/MM/yyyy")
+                .ToHtmlString();
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
         public void AngularClick()
         {
             Extensions.HtmlStringBuilderFactory = new AngularHtmlStringBuilderFactory();

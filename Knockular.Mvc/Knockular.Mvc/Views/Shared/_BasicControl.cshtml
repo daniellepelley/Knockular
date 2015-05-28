@@ -35,7 +35,22 @@
 
 <h2>@ViewBag.Title</h2>
 
+
+<hr />
+<h3>Bind</h3>
+
 <div @Html.Bind("value")></div>
+
+<input type="text" @Html.BindTwoWay("value")/>
+
+<hr />
+<h3>Date</h3>
+<br/>
+<div @Html.Date("date", "dd-MMM-yyyy")></div>
+
+<hr />
+<h3>Click</h3>
+
 <p>Clicked <b @(Html.Bind("numberOfClicks")
                     .Click("incrementClickCounter")
                     .Visible("visible"))></b> times
@@ -54,6 +69,11 @@
 <h3>ForEach</h3>
 
 @using (Html.ForEach("items", "item"))
+{
+    <div @Html.Bind("item")></div>
+}
+
+@using (Html.ForEach("items", "item", "div"))
 {
     <div @Html.Bind("item")></div>
 }

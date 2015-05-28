@@ -83,6 +83,7 @@
     <Compile Include="HtmlHelperBuilder.cs" />
     <Compile Include="KnockoutHtmlBuilderTests.cs" />
     <Compile Include="HtmlHelperTestBase.cs" />
+    <Compile Include="KnockoutScriptsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
